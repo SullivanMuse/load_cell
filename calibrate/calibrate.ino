@@ -47,74 +47,23 @@
 #define CLK 5
 
 
-#define DOUT1 2
-#define CLK1 3
-
-
 HX711 scale;
-HX711 scale1;
 
 
-float calibration_factor = 84600; //-7050 worked for my 440lb max scale setup
-float calibration_factor1 = 84600;
+float calibration_factor = 84600;
 
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("HX711 calibration sketch");
-  Serial.println("Remove all weight from scale");
-  Serial.println("After readings begin, place known weight on scale");
-  Serial.println("Press + or a to increase calibration factor");
-  Serial.println("Press - or z to decrease calibration factor");
-
-
   scale.begin(DOUT, CLK);
   scale.set_scale();
-  scale.tare(); //Reset the scale to 0
-
-
-  // scale1.begin(DOUT1, CLK1);
-  // scale1.set_scale();
-  // scale1.tare(); //Reset the scale to 0
-
-
-  long zero_factor = scale.read_average(); //Get a baseline reading
-  Serial.print("Zero factor for scale 0: "); //This can be used to remove the need to tare the scale. Useful in permanent scale projects.
-  Serial.println(zero_factor);
-
-
-  // long zero_factor1 = scale1.read_average(); //Get a baseline reading
-  // Serial.print("Zero factor for scale 1: "); //This can be used to remove the need to tare the scale. Useful in permanent scale projects.
-  // Serial.println(zero_factor1);
+  scale.
 }
 
 
 void loop() {
-  scale.set_scale(calibration_factor); //Adjust to this calibration factor
-  // scale1.set_scale(calibration_factor1); //Adjust to this calibration factor
-
-
-  Serial.print("Reading scale 0: ");
-  Serial.print(scale.get_units(), 1);
-  Serial.print(" lbs "); //Change this to kg and re-adjust the calibration factor if you follow SI units like a sane person
-
-
-  // Serial.print("Reading scale 1: ");
-  // Serial.print(scale1.get_units(), 1);
-  // Serial.print(" lbs"); //Change this to kg and re-adjust the calibration factor if you follow SI units like a sane person
+  Serial.print("Raw: ");
+  Serial.print(scale.read_average(), 1);
   Serial.println();
-
-
-  // if(Serial.available())
-  // {
-  //   char temp = Serial.read();
-  //   if(temp == '+' || temp == 'a') {
-  //     calibration_factor += 100;
-  //     calibration_factor += 100;
-  //   }
-  //   else if(temp == '-' || temp == 'z') {
-  //     calibration_factor -= 100;
-  //     calibration_factor -= 100;
-  //   }
-  // }
+  delay(200);
 }
