@@ -1,5 +1,5 @@
 # load_cell
-JM-14 Load Cell Project
+JM-14 Load Cell Project (modified)
 
 ## Getting matplotlib animation to work on WSL
 
