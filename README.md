@@ -1,5 +1,12 @@
 # load_cell
-JM-14 Load Cell Project (modified)
+JM-14 Load Cell Project
+
+## Adding library to Arduino project
+
+1. Menu Bar -> Sketch -> Include Library -> Add ZIP Library...
+2. Navigate to library source code zip file
+3. Select ZIP file
+4. Click "Open"
 
 ## Getting matplotlib animation to work on WSL
 
